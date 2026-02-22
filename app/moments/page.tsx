@@ -63,7 +63,7 @@ export default function MomentsPage() {
         <div className="mt-12 text-center">
           <div className="inline-block p-6 rounded-xl bg-white/10 border border-white/20">
             <p className="text-white/90 text-lg mb-2">
-              "Och så många fler ögonblick som kommer..."
+              &quot;Och så många fler ögonblick som kommer...&quot;
             </p>
             <p className="text-white/70 italic">
               Varje dag med dig blir ett nytt favoritminne.

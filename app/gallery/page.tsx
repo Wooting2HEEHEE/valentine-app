@@ -147,7 +147,7 @@ export default function GalleryPage() {
 
         <div className="mt-12 text-center">
           <p className="text-white/70 italic">
-            "Varje bild berättar en historia, och vår historia är min favorit." 
+            &quot;Varje bild berättar en historia, och vår historia är den vackraste jag vet.&quot; 
           </p>
         </div>
       </div>

@@ -32,8 +32,9 @@ export default function MemoriesPage() {
 
         <div className="card bg-white/10 border border-white/20 p-8">
           <h3 className="text-2xl font-handwriting text-white mb-4">Bara så du vet💝</h3>
+          <p className="text-white/80 text-sm italic">Albumet som startade allt, där varje bild berättar ett kapitel i vår kärlekshistoria.</p>
           <p className="text-white/90 leading-relaxed">
-            Denna hemsida är dedikerad till små minnen av oss som vi haft hittils (mest dig) Men det inkluderar lite minnen av varje träff sen den första. Jag vet inte om jag lyckas fixa till videos ännu, men bilder finns ;-)💝. Jag vill att du alltid ser hur mycket jag uppskattar och älskar dig min fina Muzhda
+            &nbsp;v oss som vi haft hittils (mest dig) Men det inkluderar lite minnen av varje träff sen den första. Jag vet inte om jag lyckas fixa till videos ännu, men bilder finns ;-)💝. Jag vill att du alltid ser hur mycket jag uppskattar och älskar dig min fina Muzhda
           </p>
         </div>
       </div>
