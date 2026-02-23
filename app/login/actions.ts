@@ -27,7 +27,9 @@ export async function loginAction(prevState: LoginState, formData: FormData): Pr
   const ok = await login(normalizedPassword);
   
   if (!ok) {
-    const failedAttemptsAfter = getFailedAttempts();
+    // NOTE: cookies set during this Server Action may not be reflected by getFailedAttempts()
+    // within the same request. Compute attempts locally for accurate UI + bypass behavior.
+    const failedAttemptsAfter = failedAttemptsBefore + 1;
     const attemptsRemaining = MAX_FAILED_ATTEMPTS - failedAttemptsAfter;
     
     if (attemptsRemaining > 0) {
