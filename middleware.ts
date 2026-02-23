@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { hasSessionCookie, SESSION_COOKIE_NAME } from './app/lib/auth-edge';
 
-const publicExactPaths = new Set(['/', '/404', '/not-found', '/login']);
+const publicExactPaths = new Set(['/', '/404', '/gate', '/login']);
 const publicPrefixPaths = ['/api/login', '/api/logout', '/_next'];
 
 export async function middleware(request: NextRequest) {

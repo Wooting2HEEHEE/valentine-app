@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 export async function GET() {
   // Rensa session cookie
   cookies().set({
-    name: 'session',
+    name: 'valentine-session',
     value: '',
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
@@ -14,5 +14,5 @@ export async function GET() {
   });
 
   // Redirect till 404
-  redirect('/not-found');
+  redirect('/gate');
 }

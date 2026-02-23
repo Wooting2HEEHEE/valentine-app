@@ -31,7 +31,7 @@ export function useInactivityRedirect(timeoutMinutes: number = 0.083) {
           
           if (countdownRef.current <= 0) {
             // Redirect till 404
-            router.push('/not-found');
+            router.push('/gate');
             clearInterval(countdownTimer);
             return;
           }

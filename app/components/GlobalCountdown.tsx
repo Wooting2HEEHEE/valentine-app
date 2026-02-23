@@ -33,7 +33,7 @@ export default function GlobalCountdown() {
         
         if (countdownValue <= 0) {
           clearInterval(countdownTimer);
-          router.push('/not-found');
+          router.push('/gate');
         }
       }, 1000);
     };

@@ -7,8 +7,7 @@ export default function Error404Page() {
   const router = useRouter();
 
   useEffect(() => {
-    // Omdirigera till not-found componentsss
-    router.replace('/not-found');
+    router.replace('/gate');
   }, [router]);
 
   return (
