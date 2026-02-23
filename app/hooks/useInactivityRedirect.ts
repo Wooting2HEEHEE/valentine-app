@@ -1,12 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 
-export function useInactivityRedirect(timeoutMinutes: number = 5) {
+export function useInactivityRedirect(timeoutMinutes: number = 0.083) {
   const router = useRouter();
-  const [countdown, setCountdown] = useState(0);
+  const [countdown, setCountdown] = useState(timeoutMinutes * 60);
   const [isCountingDown, setIsCountingDown] = useState(false);
+  const countdownRef = useRef(timeoutMinutes * 60);
 
   useEffect(() => {
     let activityTimer: NodeJS.Timeout;
@@ -16,6 +17,7 @@ export function useInactivityRedirect(timeoutMinutes: number = 5) {
       clearTimeout(activityTimer);
       clearInterval(countdownTimer);
       setIsCountingDown(false);
+      countdownRef.current = timeoutMinutes * 60;
       setCountdown(timeoutMinutes * 60);
 
       // Starta ny timer
@@ -24,14 +26,15 @@ export function useInactivityRedirect(timeoutMinutes: number = 5) {
         
         // Börja countdown
         countdownTimer = setInterval(() => {
-          setCountdown(prev => {
-            if (prev <= 1) {
-              // Redirect till 404
-              router.push('/404');
-              return 0;
-            }
-            return prev - 1;
-          });
+          countdownRef.current = countdownRef.current - 1;
+          setCountdown(countdownRef.current);
+          
+          if (countdownRef.current <= 0) {
+            // Redirect till 404
+            router.push('/not-found');
+            clearInterval(countdownTimer);
+            return;
+          }
         }, 1000);
       }, timeoutMinutes * 60 * 1000);
     };

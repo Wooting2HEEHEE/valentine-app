@@ -1,6 +1,11 @@
+'use client';
+
 import AppShell from '@/app/components/AppShell';
+import { useInactivityRedirect } from '../hooks/useInactivityRedirect';
 
 export default function MemoriesPage() {
+  const { isCountingDown, countdown, formatTime } = useInactivityRedirect(0.17);
+
   return (
     <AppShell>
       <div className="max-w-5xl mx-auto">

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import GlobalCountdown from './components/GlobalCountdown';
 
 export const metadata: Metadata = {
   title: 'Valentine',
@@ -14,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <GlobalCountdown />
+        {children}
+      </body>
     </html>
   );
 }
