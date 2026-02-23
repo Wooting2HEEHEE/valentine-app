@@ -2,14 +2,16 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { hasSessionCookie, SESSION_COOKIE_NAME } from './app/lib/auth-edge';
 
-const publicPaths = ['/login', '/api/login', '/api/logout', '/_next'];
+const publicExactPaths = new Set(['/', '/404', '/not-found', '/login']);
+const publicPrefixPaths = ['/api/login', '/api/logout', '/_next'];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   
   // Allow public paths and Next internals
   if (
-    publicPaths.some(path => pathname.startsWith(path)) ||
+    publicExactPaths.has(pathname) ||
+    publicPrefixPaths.some(path => pathname.startsWith(path)) ||
     pathname.startsWith('/_next/') ||
     pathname.endsWith('.ico')
   ) {

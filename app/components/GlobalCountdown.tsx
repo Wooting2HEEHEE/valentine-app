@@ -11,7 +11,6 @@ export default function GlobalCountdown() {
     let activityTimer: any = null;
     let countdownTimer: any = null;
     let countdownValue = timeoutMinutes * 60;
-    let countdownEl: any = null;
 
     const resetTimer = () => {
       if (activityTimer) clearTimeout(activityTimer);
@@ -21,8 +20,9 @@ export default function GlobalCountdown() {
     };
 
     const updateCountdownDisplay = () => {
-      if (countdownEl) {
-        countdownEl.textContent = formatTime(countdownValue);
+      const existingCountdown = document.getElementById('global-countdown');
+      if (existingCountdown) {
+        existingCountdown.textContent = formatTime(countdownValue);
       }
     };
 
@@ -43,25 +43,23 @@ export default function GlobalCountdown() {
       startCountdown();
     };
 
-    // Skapa countdown element (client-side only)
-    if (typeof window !== 'undefined') {
-      countdownEl = document.createElement('div');
-      countdownEl.id = 'global-countdown';
-      countdownEl.style.cssText = `
-        position: fixed;
-        bottom: 10px;
-        right: 10px;
-        background: rgba(239, 68, 68, 0.9);
-        color: white;
-        padding: 8px 12px;
-        border-radius: 8px;
-        font-size: 12px;
-        font-family: monospace;
-        z-index: 9999;
-        display: none;
-      `;
-      document.body.appendChild(countdownEl);
-    }
+    // Skapa countdown element
+    const countdownEl = document.createElement('div');
+    countdownEl.id = 'global-countdown';
+    countdownEl.style.cssText = `
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(239, 68, 68, 0.9);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-family: monospace;
+      z-index: 9999;
+      display: none;
+    `;
+    document.body.appendChild(countdownEl);
 
     // Event listeners
     const events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'];
